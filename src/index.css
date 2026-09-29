@@ -1,0 +1,94 @@
+@import "tailwindcss";
+@import "@fontsource/nunito/latin-500.css";
+@import "@fontsource/nunito/latin-700.css";
+@import "@fontsource/nunito/latin-800.css";
+@import "@fontsource/nunito/cyrillic-500.css";
+@import "@fontsource/nunito/cyrillic-700.css";
+@import "@fontsource/nunito/cyrillic-800.css";
+@import "@fontsource/pangolin/latin-400.css";
+@import "@fontsource/pangolin/cyrillic-400.css";
+
+:root {
+  color-scheme: dark;
+  --ink: #1a1a1a;
+  --paper: #fffdf8;
+  --navy: #172033;
+  --gold: #e2c48a;
+}
+
+html,
+body,
+#root {
+  min-height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Nunito, "Segoe UI", sans-serif;
+  background: var(--navy);
+}
+
+.font-hand {
+  font-family: Pangolin, "Comic Sans MS", cursive;
+}
+
+.page-shadow {
+  filter: drop-shadow(0 22px 40px rgba(0, 0, 0, 0.38));
+}
+
+.print-stack {
+  position: absolute;
+  left: -12000px;
+  top: 0;
+  width: 794px;
+}
+
+@media print {
+  * {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  body,
+  #root,
+  #root > div {
+    background: white !important;
+  }
+
+  .no-print {
+    display: none !important;
+  }
+
+  .print-stack {
+    position: static !important;
+    left: auto !important;
+    top: auto !important;
+    width: auto !important;
+  }
+
+  .a4-sheet {
+    width: 210mm !important;
+    height: 297mm !important;
+    page-break-after: always;
+    break-after: page;
+    break-inside: avoid;
+    overflow: hidden;
+    background: white !important;
+  }
+
+  .a4-sheet:last-child {
+    page-break-after: auto;
+    break-after: auto;
+  }
+
+  .a4-sheet svg {
+    width: 210mm !important;
+    height: 297mm !important;
+    display: block;
+  }
+}
+
+@page {
+  size: A4 portrait;
+  margin: 0;
+}
